@@ -1,0 +1,75 @@
+{
+  "round": 2,
+  "blocks": [
+    {
+      "persona_id": "quant",
+      "engine": "claude",
+      "producer_status": "ok",
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/quant.md",
+      "candidates": [
+        {
+          "candidate_key": "walkforward-oos",
+          "kind": "experiment",
+          "title": "Walk-forward out-of-sample test as new COR1M<8 episodes print",
+          "priority": "high",
+          "parent": "H-COR-002",
+          "rationale": "N=8 in-sample, 7/8 in 2024-26. The only honest resolution of significance AND generalization is genuine new episodes. Cannot be run today (no new episodes exist) — data-blocked."
+        },
+        {
+          "candidate_key": "real-option-cost",
+          "kind": "experiment",
+          "title": "Real option-chain hedge cost vs the stylized Black-Scholes proxy",
+          "priority": "high",
+          "parent": "H-COR-006",
+          "rationale": "The hedge P&L edge (+0.50% QQQ gross) is stylized; real spreads/slippage could erase it. Requires a historical option chain we do not hold — data-blocked."
+        }
+      ],
+      "reprioritize": []
+    },
+    {
+      "persona_id": "portfolio-manager",
+      "engine": "claude",
+      "producer_status": "ok",
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/portfolio-manager.md",
+      "candidates": [
+        {
+          "candidate_key": "walkforward-oos",
+          "kind": "experiment",
+          "title": "Walk-forward out-of-sample test as new COR1M<8 episodes print",
+          "priority": "high",
+          "parent": "H-COR-002",
+          "rationale": "Before sizing a hedge budget I need live confirmation; today there is nothing new to test — data-blocked."
+        },
+        {
+          "candidate_key": "real-option-cost",
+          "kind": "experiment",
+          "title": "Real option-chain hedge cost vs the stylized Black-Scholes proxy",
+          "priority": "high",
+          "parent": "H-COR-006",
+          "rationale": "Net-of-real-cost economics is the gate before any scale-up — data-blocked without an option chain."
+        }
+      ],
+      "reprioritize": []
+    },
+    {
+      "persona_id": "cio",
+      "engine": "claude",
+      "producer_status": "ok",
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/cio.md",
+      "candidates": [
+        {
+          "candidate_key": "walkforward-oos",
+          "kind": "experiment",
+          "title": "Walk-forward out-of-sample test as new COR1M<8 episodes print",
+          "priority": "high",
+          "parent": "H-COR-002",
+          "rationale": "Strategic durability hinges on out-of-regime evidence; none exists yet — data-blocked."
+        }
+      ],
+      "reprioritize": []
+    }
+  ]
+}

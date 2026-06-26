@@ -1,0 +1,34 @@
+{
+  "round1/beta-vs-concentration": {
+    "id": "H-COR-006",
+    "path": "hypothesis_tracking/h-cor-006_the-qqq-over-bulled-penalty-is-concentration-not_2026-06-17.md",
+    "kind": "hypothesis",
+    "table": "hypotheses"
+  },
+  "round1/era-stability": {
+    "id": "H-COR-007",
+    "path": "hypothesis_tracking/h-cor-007_the-cor1m-8-effect-generalizes-beyond-the-2024-2_2026-06-17.md",
+    "kind": "hypothesis",
+    "table": "hypotheses"
+  },
+  "round1/iwm-control": {
+    "id": "E-COR-107",
+    "kind": "experiment",
+    "table": "followup"
+  },
+  "round1/oos-tracker": {
+    "id": "E-COR-108",
+    "kind": "experiment",
+    "table": "followup"
+  },
+  "round1/mtc-correction": {
+    "id": "E-COR-109",
+    "kind": "experiment",
+    "table": "followup"
+  },
+  "round1/hedge-net-of-cost": {
+    "id": "E-COR-110",
+    "kind": "experiment",
+    "table": "followup"
+  }
+}

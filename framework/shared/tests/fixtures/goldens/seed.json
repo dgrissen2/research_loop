@@ -1,0 +1,41 @@
+{
+  "round": 1,
+  "personas": [
+    {
+      "persona_id": "quant",
+      "claude": {
+        "interpret": "seed read paragraph",
+        "act": "expanded hypothesis list paragraph"
+      },
+      "resolved_source": "local",
+      "resolved_path": "<PROJ>/.claude/personas/quant.md",
+      "disagreement_note": null,
+      "twin": {
+        "engine": "codex",
+        "producer_status": "ok",
+        "interpret": "twin interpret",
+        "act": "twin act",
+        "artifact_path": null
+      },
+      "agreement": "agree"
+    },
+    {
+      "persona_id": "cio",
+      "claude": {
+        "interpret": "seed read paragraph",
+        "act": "expanded hypothesis list paragraph"
+      },
+      "resolved_source": "local",
+      "resolved_path": "<PROJ>/.claude/personas/cio.md",
+      "disagreement_note": null,
+      "twin": {
+        "engine": "codex",
+        "producer_status": "ok",
+        "interpret": "twin interpret",
+        "act": "twin act",
+        "artifact_path": null
+      },
+      "agreement": "agree"
+    }
+  ]
+}

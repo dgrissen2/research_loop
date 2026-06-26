@@ -1,0 +1,124 @@
+COR1M OVER-BULLED CONCENTRATION FLAG AS A HEDGE TRIGGER
+H-COR-002 (trigger lead) & H-COR-001 (concentration specificity, QQQ-vs-SPY)
+======================================================================
+Data: real Cboe COR1M + Yahoo SPY/QQQ. Window 2018-01-02 -> 2026-06-02  (N=2115 aligned days)
+Triggers: abs8 = COR1M < 8; pctile = COR1M <= 10% of trailing 252d. Breach = path-min <= -5%.
+Outcomes are realized ETF price paths (no options inputs) -> NON-CIRCULAR.
+
+Primary trigger episodes (abs8): 39 trigger-days in 9 distinct episodes (>5 calm days apart). Episode-level N = 9.
+Episode start dates: 2018-01-03, 2024-06-27, 2024-12-12, 2025-01-23, 2025-10-07, 2025-10-24, 2026-01-13, 2026-01-27, 2026-05-29
+
+######################################################################
+TRIGGER = abs8   (triggered days with a full forward window vary by horizon)
+######################################################################
+
+--- horizon 5d ---
+inst | grp      |     N | mean pmin dd | breach -5% | mean fwd ret
+----------------------------------------------------------------------
+spy  | trigger  |    36 |       -1.00% |     +0.00% |       -0.21%
+spy  | baseline |  2074 |       -0.98% |     +3.95% |       +0.28%
+spy  | EPISODE  |     8 |       -1.24% |     +0.00% | (entry-day events)
+----------------------------------------------------------------------
+qqq  | trigger  |    36 |       -1.68% |     +0.00% |       -0.62%
+qqq  | baseline |  2074 |       -1.24% |     +6.27% |       +0.43%
+qqq  | EPISODE  |     8 |       -1.55% |     +0.00% | (entry-day events)
+----------------------------------------------------------------------
+
+--- horizon 10d ---
+inst | grp      |     N | mean pmin dd | breach -5% | mean fwd ret
+----------------------------------------------------------------------
+spy  | trigger  |    36 |       -1.65% |     +0.00% |       +0.02%
+spy  | baseline |  2069 |       -1.71% |     +9.28% |       +0.55%
+spy  | EPISODE  |     8 |       -1.66% |     +0.00% | (entry-day events)
+----------------------------------------------------------------------
+qqq  | trigger  |    36 |       -2.99% |    +22.22% |       -0.99%
+qqq  | baseline |  2069 |       -2.13% |    +15.95% |       +0.84%
+qqq  | EPISODE  |     8 |       -2.27% |    +12.50% | (entry-day events)
+----------------------------------------------------------------------
+
+--- horizon 21d ---
+inst | grp      |     N | mean pmin dd | breach -5% | mean fwd ret
+----------------------------------------------------------------------
+spy  | trigger  |    36 |       -3.98% |    +33.33% |       -1.95%
+spy  | baseline |  2058 |       -2.77% |    +18.95% |       +1.17%
+spy  | EPISODE  |     8 |       -2.25% |     +0.00% | (entry-day events)
+----------------------------------------------------------------------
+qqq  | trigger  |    36 |       -6.41% |    +55.56% |       -3.94%
+qqq  | baseline |  2058 |       -3.39% |    +27.21% |       +1.76%
+qqq  | EPISODE  |     8 |       -3.73% |    +25.00% | (entry-day events)
+----------------------------------------------------------------------
+
+Clustering-robust check (abs8, 21d): moving-block bootstrap p that triggered
+mean drawdown <= baseline by chance (block len = 21, 5000 resamples):
+  spy : triggered -3.98% vs baseline -2.77%  gap=+1.20%  block-bootstrap p=0.227
+  qqq : triggered -6.41% vs baseline -3.39%  gap=+3.02%  block-bootstrap p=0.132
+
+Hit-rate / precision vs base rate (abs8, 21d): does the flag concentrate
+-5% breaches above the unconditional rate? precision=P(breach|trigger), base=P(breach):
+  spy : precision=+33.33%  base_rate=+19.20%  lift=1.74x  (n_trig=36)
+  qqq : precision=+55.56%  base_rate=+27.70%  lift=2.01x  (n_trig=36)
+
+--- horizon 42d ---
+inst | grp      |     N | mean pmin dd | breach -5% | mean fwd ret
+----------------------------------------------------------------------
+spy  | trigger  |    36 |       -6.01% |    +69.44% |       -0.86%
+spy  | baseline |  2037 |       -4.12% |    +28.28% |       +2.24%
+spy  | EPISODE  |     8 |       -5.38% |    +37.50% | (entry-day events)
+----------------------------------------------------------------------
+qqq  | trigger  |    36 |       -8.60% |    +77.78% |       -2.85%
+qqq  | baseline |  2037 |       -4.97% |    +38.44% |       +3.35%
+qqq  | EPISODE  |     8 |       -6.78% |    +62.50% | (entry-day events)
+----------------------------------------------------------------------
+######################################################################
+TRIGGER = pctile   (triggered days with a full forward window vary by horizon)
+######################################################################
+
+--- horizon 5d ---
+inst | grp      |     N | mean pmin dd | breach -5% | mean fwd ret
+----------------------------------------------------------------------
+spy  | trigger  |   264 |       -0.85% |     +0.76% |       +0.13%
+spy  | baseline |  1846 |       -1.00% |     +4.33% |       +0.29%
+----------------------------------------------------------------------
+qqq  | trigger  |   264 |       -1.26% |     +1.52% |       +0.18%
+qqq  | baseline |  1846 |       -1.25% |     +6.83% |       +0.44%
+----------------------------------------------------------------------
+
+--- horizon 10d ---
+inst | grp      |     N | mean pmin dd | breach -5% | mean fwd ret
+----------------------------------------------------------------------
+spy  | trigger  |   264 |       -1.41% |     +1.52% |       +0.40%
+spy  | baseline |  1841 |       -1.75% |    +10.21% |       +0.56%
+----------------------------------------------------------------------
+qqq  | trigger  |   264 |       -2.09% |    +10.61% |       +0.46%
+qqq  | baseline |  1841 |       -2.15% |    +16.84% |       +0.85%
+----------------------------------------------------------------------
+
+--- horizon 21d ---
+inst | grp      |     N | mean pmin dd | breach -5% | mean fwd ret
+----------------------------------------------------------------------
+spy  | trigger  |   264 |       -2.44% |    +12.88% |       +0.50%
+spy  | baseline |  1830 |       -2.84% |    +20.11% |       +1.20%
+----------------------------------------------------------------------
+qqq  | trigger  |   264 |       -3.53% |    +23.86% |       +0.39%
+qqq  | baseline |  1830 |       -3.43% |    +28.25% |       +1.85%
+----------------------------------------------------------------------
+
+--- horizon 42d ---
+inst | grp      |     N | mean pmin dd | breach -5% | mean fwd ret
+----------------------------------------------------------------------
+spy  | trigger  |   264 |       -4.20% |    +29.55% |       +0.48%
+spy  | baseline |  1809 |       -4.15% |    +28.91% |       +2.44%
+----------------------------------------------------------------------
+qqq  | trigger  |   264 |       -5.52% |    +43.18% |       +0.81%
+qqq  | baseline |  1809 |       -4.96% |    +38.53% |       +3.59%
+----------------------------------------------------------------------
+
+======================================================================
+VERDICT CHECKS
+======================================================================
+  H-COR-002 spy: deeper dd=True, higher breach=True -> worse
+  H-COR-002 qqq: deeper dd=True, higher breach=True -> worse
+H-COR-002 PASS/FAIL: PASS (triggered worse than baseline in 2/2 instruments at 21d; need all)
+
+  H-COR-001 gaps (baseline-minus-triggered dd; larger = trigger hurts more): QQQ=+3.02%, SPY=+1.20%
+H-COR-001 PASS/FAIL: PASS (concentration-specific iff QQQ gap exceeds SPY gap; WEAK contrast without IWM)

@@ -1,0 +1,34 @@
+{
+  "round": 1,
+  "deferred": {"is_deferred": false, "reason": null},
+  "termination_recommendation": {"recommend": "continue", "reason": null, "data_blocked": []},
+  "decisions": [
+    {
+      "decision_key": "qqq-beta-adjust",
+      "classification": "experiment",
+      "reason": "Converged across quant Claude+Codex; cheap robustness check.",
+      "title": "Beta-adjust the QQQ trigger",
+      "priority": "medium",
+      "parent": "H-FIX-001",
+      "sources": [
+        {"persona_id": "quant", "engine": "claude", "candidate_key": "qqq-beta-adjust"},
+        {"persona_id": "quant", "engine": "codex", "candidate_key": "qqq-beta-adjust"}
+      ]
+    },
+    {
+      "decision_key": "oos-validation",
+      "classification": "promote",
+      "reason": "CIO flags this as the go/no-go decision; standalone falsifiable.",
+      "title": "OOS validation regime",
+      "rationale": "Test out of sample.",
+      "falsification": "Effect vanishes OOS.",
+      "decision_impact": "Decides go/no-go.",
+      "parent": null,
+      "priority": "high",
+      "sources": [
+        {"persona_id": "cio", "engine": "claude", "candidate_key": "oos-validation"},
+        {"persona_id": "cio", "engine": "codex", "candidate_key": "oos-validation"}
+      ]
+    }
+  ]
+}

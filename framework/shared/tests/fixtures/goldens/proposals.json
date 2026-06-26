@@ -1,0 +1,73 @@
+{
+  "round": 1,
+  "blocks": [
+    {
+      "persona_id": "quant",
+      "engine": "claude",
+      "producer_status": "ok",
+      "resolved_source": "local",
+      "resolved_path": "<PROJ>/.claude/personas/quant.md",
+      "candidates": [
+        {
+          "candidate_key": "quant-claude-k",
+          "kind": "hypothesis",
+          "title": "a title",
+          "priority": "high",
+          "parent": null
+        }
+      ],
+      "reprioritize": []
+    },
+    {
+      "persona_id": "quant",
+      "engine": "codex",
+      "producer_status": "ok",
+      "resolved_source": "local",
+      "resolved_path": "<PROJ>/.claude/personas/quant.md",
+      "candidates": [
+        {
+          "candidate_key": "quant-codex-k",
+          "kind": "hypothesis",
+          "title": "a title",
+          "priority": "high",
+          "parent": null
+        }
+      ],
+      "reprioritize": []
+    },
+    {
+      "persona_id": "cio",
+      "engine": "claude",
+      "producer_status": "ok",
+      "resolved_source": "local",
+      "resolved_path": "<PROJ>/.claude/personas/cio.md",
+      "candidates": [
+        {
+          "candidate_key": "cio-claude-k",
+          "kind": "hypothesis",
+          "title": "a title",
+          "priority": "high",
+          "parent": null
+        }
+      ],
+      "reprioritize": []
+    },
+    {
+      "persona_id": "cio",
+      "engine": "codex",
+      "producer_status": "ok",
+      "resolved_source": "local",
+      "resolved_path": "<PROJ>/.claude/personas/cio.md",
+      "candidates": [
+        {
+          "candidate_key": "cio-codex-k",
+          "kind": "hypothesis",
+          "title": "a title",
+          "priority": "high",
+          "parent": null
+        }
+      ],
+      "reprioritize": []
+    }
+  ]
+}

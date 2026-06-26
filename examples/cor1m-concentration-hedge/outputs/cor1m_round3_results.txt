@@ -1,0 +1,27 @@
+COR1M CONCENTRATION-HEDGE — ROUND 3 (E-COR-005 beta-adjust, E-COR-010 episode-only)
+==============================================================================
+Data 2018-01-02->2026-06-02  N=2115  horizon=21d
+DATA-BLOCKED (not run): E-COR-008 real option-chain cost; E-COR-009 walk-forward OOS (need more episodes).
+
+QQQ market beta to SPY (daily returns, full sample): 1.16
+
+##############################################################################
+E-COR-005  Beta vs concentration  (qqq_dd21 ~ trigger + spy_dd21 + VIX)
+##############################################################################
+  trigger coef (incremental QQQ 21d drawdown, beyond SPY move + VIX) = -1.67%
+  spy_dd21 coef (QQQ's loading on the market path) = +1.00   VIX coef = +0.0260%
+  95% block-bootstrap CI for trigger coef [-3.14%, -0.15%] -> significant (CI off 0)
+  Read: vs round-2 VIX-only coef -3.24%, controlling ALSO for SPY's own drawdown leaves -1.67%
+        -> concentration-specific component survives
+
+##############################################################################
+E-COR-010  Episode-only inference (N=8 entries) + permutation p + multiple-testing
+##############################################################################
+  QQQ mean EPISODE-ENTRY 21d drawdown (N=8): -3.73%
+  Permutation p (random 8-episode placements with mean dd <= observed): 0.386  (NOT significant at 0.05 — expected at N=8)
+  Null mean dd = -3.42%; observed is +0.31% deeper than random.
+  Multiple-testing note: the 6..10 sweep tested 5 thresholds; Bonferroni alpha = 0.010. Episode-level p=0.386 vs Bonferroni 0.010.
+
+VERDICT INPUTS (round 3):
+  E-COR-005: trigger KEEPS a concentration-specific component beyond beta/VIX.
+  E-COR-010: episode-level permutation p=0.386 -> underpowered (N=8), suggestive not significant.

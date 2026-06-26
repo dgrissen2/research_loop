@@ -1,0 +1,58 @@
+{
+  "round": 1,
+  "blocks": [
+    {
+      "persona_id": "quant",
+      "engine": "claude",
+      "producer_status": "ok",
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/quant.md",
+      "candidates": [
+        {"candidate_key": "qqq-beta-adjust", "kind": "experiment", "title": "Beta-adjust the QQQ trigger",
+         "rationale": "Control for market beta.", "falsification": "No gap after beta-adjust.",
+         "decision_impact": "Tightens the hedge rule.", "parent": "H-FIX-001", "priority": "medium"}
+      ],
+      "reprioritize": [{"id": "H-FIX-000", "action": "deprioritize", "why": "superseded"}]
+    },
+    {
+      "persona_id": "quant",
+      "engine": "codex",
+      "producer_status": "ok",
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/quant.md",
+      "candidates": [
+        {"candidate_key": "qqq-beta-adjust", "kind": "experiment", "title": "Beta-adjust QQQ",
+         "rationale": "Same idea, independently.", "falsification": "No residual gap.",
+         "decision_impact": "Tightens rule.", "parent": "H-FIX-001", "priority": "medium"}
+      ],
+      "reprioritize": []
+    },
+    {
+      "persona_id": "cio",
+      "engine": "claude",
+      "producer_status": "ok",
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/cio.md",
+      "candidates": [
+        {"candidate_key": "oos-validation", "kind": "hypothesis", "title": "OOS validation regime",
+         "rationale": "Test out of sample.", "falsification": "Effect vanishes OOS.",
+         "decision_impact": "Decides go/no-go.", "parent": null, "priority": "high"}
+      ],
+      "reprioritize": []
+    },
+    {
+      "persona_id": "cio",
+      "engine": "codex",
+      "producer_status": "ok",
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/cio.md",
+      "candidates": [
+        {"candidate_key": "oos-validation", "kind": "hypothesis", "title": "OOS validation",
+         "rationale": "Same go/no-go question, independently.",
+         "falsification": "Effect vanishes OOS.",
+         "decision_impact": "Decides go/no-go.", "parent": null, "priority": "high"}
+      ],
+      "reprioritize": []
+    }
+  ]
+}

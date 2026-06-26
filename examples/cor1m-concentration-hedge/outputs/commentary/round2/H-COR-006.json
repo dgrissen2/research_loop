@@ -1,0 +1,39 @@
+{
+  "round": 2,
+  "hypothesis_id": "H-COR-006",
+  "personas": [
+    {
+      "persona_id": "cio",
+      "claude": {
+        "interpret": "This is the result I needed to keep COR1M on the board — the QQQ effect is not merely 'tech moves more.' A -1.67% residual after stripping beta and vol is small but it's the signature of something concentration-specific, exactly the risk I worry about in a top-heavy market.",
+        "act": "COR1M stays a sanctioned QQQ-sleeve hedge input. I accept it is small and underpowered; I size accordingly and revisit as episodes accrue."
+      },
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/cio.md",
+      "disagreement_note": null,
+      "agreement": "twin_absent"
+    },
+    {
+      "persona_id": "quant",
+      "claude": {
+        "interpret": "The regression residual is honest — the market path is netted out contemporaneously, VIX is controlled, and the CI is off zero. But the episode-level permutation at p 0.386 is the number that governs: with 8 independent events I cannot certify this. The day-level CI borrows strength from overlapping windows.",
+        "act": "weak_support, not stronger. I will not endorse sizing that assumes significance. The decision-moving tests (real cost, walk-forward) are data-blocked, so the honest move is to stop refining in-sample and wait for out-of-sample episodes."
+      },
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/quant.md",
+      "disagreement_note": null,
+      "agreement": "twin_absent"
+    },
+    {
+      "persona_id": "portfolio-manager",
+      "claude": {
+        "interpret": "A ~1.7% concentration-specific drawdown edge on QQQ, surviving beta and vol, justifies a small protective tilt but not a standalone program. The data-blocked cost test matters most — a stylized put helped QQQ by +0.50% gross, but real spreads could erase that.",
+        "act": "Run a minimal QQQ hedge tilt on COR1M<8, premium-capped, and flag E-COR-008 (real cost) as the gate before any scale-up."
+      },
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/portfolio-manager.md",
+      "disagreement_note": null,
+      "agreement": "twin_absent"
+    }
+  ]
+}

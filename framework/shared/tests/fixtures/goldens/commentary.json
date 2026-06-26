@@ -1,0 +1,42 @@
+{
+  "round": 1,
+  "hypothesis_id": "H-COR-001",
+  "personas": [
+    {
+      "persona_id": "quant",
+      "claude": {
+        "interpret": "interpret paragraph",
+        "act": "act paragraph"
+      },
+      "resolved_source": "local",
+      "resolved_path": "<PROJ>/.claude/personas/quant.md",
+      "disagreement_note": null,
+      "twin": {
+        "engine": "codex",
+        "producer_status": "ok",
+        "interpret": "twin interpret",
+        "act": "twin act",
+        "artifact_path": null
+      },
+      "agreement": "agree"
+    },
+    {
+      "persona_id": "cio",
+      "claude": {
+        "interpret": "interpret paragraph",
+        "act": "act paragraph"
+      },
+      "resolved_source": "local",
+      "resolved_path": "<PROJ>/.claude/personas/cio.md",
+      "disagreement_note": null,
+      "twin": {
+        "engine": "codex",
+        "producer_status": "ok",
+        "interpret": "twin interpret",
+        "act": "twin act",
+        "artifact_path": null
+      },
+      "agreement": "agree"
+    }
+  ]
+}

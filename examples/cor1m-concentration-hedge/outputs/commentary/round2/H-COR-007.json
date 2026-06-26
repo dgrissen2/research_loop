@@ -1,0 +1,39 @@
+{
+  "round": 2,
+  "hypothesis_id": "H-COR-007",
+  "personas": [
+    {
+      "persona_id": "cio",
+      "claude": {
+        "interpret": "This is the caveat that frames everything else. A signal that only exists in one regime is a regime tool, not a law of markets. I'm comfortable using it now, in this concentrated tape, because the regime it was found in is the regime we're in — but I won't pretend it's a permanent edge.",
+        "act": "Adopt COR1M as a current-regime hedge flag with an explicit 're-test when the regime changes' rider. No claim of durability in committee materials."
+      },
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/cio.md",
+      "disagreement_note": null,
+      "agreement": "twin_absent"
+    },
+    {
+      "persona_id": "quant",
+      "claude": {
+        "interpret": "One pre-2024 episode is zero degrees of freedom — the correct verdict is inconclusive, not not_supported, and certainly not supported. The 2024-26 in-regime CI off zero is real but in-sample to the regime; there is no out-of-regime split. Per my own rule, the absence of a valid out-of-sample split caps confidence.",
+        "act": "Mark the whole program 2024-26-bound. Forbid any backtest that quietly assumes cross-regime stability. The only thing that resolves this is genuine new episodes (E-COR-009), which we cannot manufacture."
+      },
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/quant.md",
+      "disagreement_note": null,
+      "agreement": "twin_absent"
+    },
+    {
+      "persona_id": "portfolio-manager",
+      "claude": {
+        "interpret": "For risk governance, 'works in this regime, unknown elsewhere' is a workable posture — I hedge the regime I'm in. The trap is letting a 2024-26 edge harden into a permanent assumption in the risk model.",
+        "act": "Size COR1M-driven hedges to the current regime only, with a documented expiry/re-validation trigger if market breadth normalizes. Keep it out of any long-horizon strategic assumption."
+      },
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/portfolio-manager.md",
+      "disagreement_note": null,
+      "agreement": "twin_absent"
+    }
+  ]
+}

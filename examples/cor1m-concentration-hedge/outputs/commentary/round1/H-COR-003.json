@@ -1,0 +1,39 @@
+{
+  "round": 1,
+  "hypothesis_id": "H-COR-003",
+  "personas": [
+    {
+      "persona_id": "cio",
+      "claude": {
+        "interpret": "This is the result that earns COR1M a seat at the table — but only at one chair. If COR1M is just VIX for SPY, I won't add it to the broad-market playbook; if it's distinct for QQQ, that's where concentration risk actually concentrates. The asymmetry is the finding, not a disappointment.",
+        "act": "Authorize COR1M as a Nasdaq-specific hedge input; keep the SPY hedge VIX-driven. Hold pending the beta test before I treat the QQQ edge as concentration rather than leverage."
+      },
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/cio.md",
+      "disagreement_note": null,
+      "agreement": "twin_absent"
+    },
+    {
+      "persona_id": "quant",
+      "claude": {
+        "interpret": "The honest read is one CI off zero (QQQ) and one CI spanning zero (SPY), both on a handful of conditioned days — suggestive, not robust. The OLS is a manual two-regressor fit; I'd want heteroskedasticity-aware errors and a third regressor for the market move (SPY dd) before crediting 'beyond VIX' rather than 'beyond VIX but actually beta.'",
+        "act": "Cap at mixed. Require E-COR-105 (beta control) next; if the trigger coefficient survives SPY-dd + VIX, the claim strengthens to weak_support, otherwise it collapses to 'QQQ beta.'"
+      },
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/quant.md",
+      "disagreement_note": null,
+      "agreement": "twin_absent"
+    },
+    {
+      "persona_id": "portfolio-manager",
+      "claude": {
+        "interpret": "Operationally, 'COR1M adds nothing to SPY hedging but something to QQQ hedging' is a clean, usable rule — it tells me where not to waste complexity. The risk is leaning on a 26-day conditional effect that could be beta in disguise.",
+        "act": "Route COR1M into the QQQ hedge sleeve only, VIX into the SPY sleeve, and gate any sizing on the beta test clearing. No redundant COR1M overlay on broad-market protection."
+      },
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/portfolio-manager.md",
+      "disagreement_note": null,
+      "agreement": "twin_absent"
+    }
+  ]
+}

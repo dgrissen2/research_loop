@@ -1,0 +1,47 @@
+COR1M CONCENTRATION-HEDGE — ROUND 2 EXPERIMENTS (E-COR-006, E-COR-002, E-COR-003)
+==============================================================================
+Data 2018-01-02->2026-06-02  N=2115  horizon=21d
+
+##############################################################################
+E-COR-006  Episode-level robustness (leave-one-episode-out + threshold sweep)
+##############################################################################
+Episodes with a full 21d forward window: 8  (dates: 2018-01-03, 2024-06-27, 2024-12-12, 2025-01-23, 2025-10-07, 2025-10-24, 2026-01-13, 2026-01-27)
+
+Leave-one-episode-out: QQQ & SPY mean EPISODE-ENTRY path-min drawdown, dropping each episode.
+  QQQ full episode mean dd = -3.73%
+    drop 2026-01-27 -> -3.49% (effect weakest without it); drop 2018-01-03 -> -4.29% (strongest)
+    LOO swing = 0.80%  -> no single episode dominates
+  SPY full episode mean dd = -2.25%
+    drop 2024-12-12 -> -2.01% (effect weakest without it); drop 2018-01-03 -> -2.63% (strongest)
+    LOO swing = 0.62%  -> no single episode dominates
+
+Threshold sweep (COR1M < x): QQQ 21d triggered mean dd, baseline, gap, episode count
+    x | trig N | eps |  trig dd |  base dd |     gap
+    6 |     11 |   1 |  -10.78% |   -3.40% |  +7.38%
+    7 |     17 |   4 |   -8.97% |   -3.39% |  +5.58%
+    8 |     36 |   9 |   -6.41% |   -3.39% |  +3.02%
+    9 |     65 |  12 |   -5.61% |   -3.37% |  +2.24%
+   10 |    101 |  18 |   -5.60% |   -3.33% |  +2.27%
+  Read: a smooth monotone gap as x falls = structural; a spike only at x=8 = knife-edge.
+
+##############################################################################
+E-COR-002  Does COR1M < 8 add forward-drawdown info beyond low VIX?
+##############################################################################
+Low-VIX regime = VIX <= 33rd pctile (16.0).  Conditional comparison within low-VIX days (QQQ, 21d path-min dd):
+  QQQ: low-VIX & COR1M<8 (N=26) dd=-7.11%   vs low-VIX & COR1M>=8 (N=666) dd=-2.83%   delta=-4.28%
+  SPY: low-VIX & COR1M<8 (N=26) dd=-4.38%   vs low-VIX & COR1M>=8 (N=666) dd=-2.34%   delta=-2.04%
+
+Manual OLS:  path_min_dd_21 ~ b0 + b1*trigger(COR1M<8) + b2*VIX_level   (QQQ & SPY)
+  QQQ: trigger coef b1=-3.237% (shift in the 21d path-min drawdown, not per-day), VIX coef b2=-0.0368% per VIX point; 95% block-bootstrap CI for b1 [-6.082%, -0.335%] -> significant
+  SPY: trigger coef b1=-1.569% (shift in the 21d path-min drawdown, not per-day), VIX coef b2=-0.0626% per VIX point; 95% block-bootstrap CI for b1 [-3.094%, +0.267%] -> NOT significant (CI spans 0)
+  Read: if b1 stays clearly negative with a CI off zero, COR1M<8 adds info beyond VIX.
+
+##############################################################################
+E-COR-003  Stylized 21d ATM protective-put hedge P&L (net of cost), episode-entry triggers
+##############################################################################
+Cost model: ATM put premium ~ BS with sigma=VIX/100, T=21/252, r=0, S=K (stylized, not live quotes).
+  inst | eps | unhedged ret |  hedged ret |  premium | hedge adds
+  qqq  |   8 |       -1.43% |      -0.93% |    1.67% |     +0.50% (helps)
+  spy  |   8 |       -0.64% |      -1.29% |    1.67% |     -0.65% (hurts)
+  Read: hedge 'adds' > 0 means the protective put beat doing nothing across these episodes, net of cost.
+

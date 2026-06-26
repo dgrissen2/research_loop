@@ -1,0 +1,39 @@
+{
+  "round": 1,
+  "hypothesis_id": "H-COR-001",
+  "personas": [
+    {
+      "persona_id": "cio",
+      "claude": {
+        "interpret": "A monotone threshold response is the part I weight most — it says the signal is graded, not a single cherry-picked level, which separates a real allocation tell from a backtest accident. But 'QQQ hurts more than SPY' is a thin reed for a concentration claim when both indices are dominated by the same seven names; I read this as consistent with concentration, not evidence of it.",
+        "act": "I will not change the strategic book on this alone. I authorize the two follow-ups (IWM control, external concentration data) and treat COR1M<8 as a watch-flag, not an allocation input, until the contrast is real."
+      },
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/cio.md",
+      "disagreement_note": null,
+      "agreement": "twin_absent"
+    },
+    {
+      "persona_id": "quant",
+      "claude": {
+        "interpret": "T1 has no significance test attached and the QQQ-vs-SPY gap (3.02% vs 1.20%) is a difference of two noisy means on 8 episodes — I would not report it as an effect. T2 (monotone sweep) and T3 (small LOO swing) are the credible parts: they argue against a knife-edge and against single-episode dominance.",
+        "act": "Cap the verdict at weak_support. Before any promotion I require a low-concentration control (IWM) so 'concentration-specific' is a real two-sided contrast, and an external concentration variable so the claim isn't circular with COR1M's own construction."
+      },
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/quant.md",
+      "disagreement_note": null,
+      "agreement": "twin_absent"
+    },
+    {
+      "persona_id": "portfolio-manager",
+      "claude": {
+        "interpret": "For risk governance the validity question matters only insofar as it changes what I hedge. The evidence says the flag bites harder in the more concentrated tape, which is usable as a tilt (hedge QQQ before SPY) even if the academic concentration claim is unproven.",
+        "act": "I will let H-COR-002 (the tradeability test) carry the operational decision and keep H-COR-001 as supporting color. No book change from this note in isolation."
+      },
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/portfolio-manager.md",
+      "disagreement_note": null,
+      "agreement": "twin_absent"
+    }
+  ]
+}

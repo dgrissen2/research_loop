@@ -1,0 +1,39 @@
+{
+  "round": 1,
+  "hypothesis_id": "H-COR-002",
+  "personas": [
+    {
+      "persona_id": "cio",
+      "claude": {
+        "interpret": "The economic shape is exactly what I want from a tail flag — it gets more right as the horizon lengthens and it doubles the breach rate in the crowded index. That is a usable allocation tell even if the p-value is soft, because I am buying asymmetric protection, not betting the farm on the mean.",
+        "act": "I am comfortable treating COR1M<8 as a standing 'raise hedge readiness' flag at small size. I will not size it like a high-conviction signal until it survives out-of-sample."
+      },
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/cio.md",
+      "disagreement_note": null,
+      "agreement": "twin_absent"
+    },
+    {
+      "persona_id": "quant",
+      "claude": {
+        "interpret": "This is the textbook clustering trap. 36 'observations' are 8 episodes; the moving-block bootstrap p of 0.13/0.23 is the honest number and it does not clear 0.05. The lift figures are real but rest on ~8 independent draws, almost all from 2024-26 — a single regime, not a tested distribution.",
+        "act": "Verdict must stay weak_support; do not promote to a mechanical trigger. The only thing that moves this is genuine out-of-sample episodes (E-COR-103) and a multiple-testing correction (E-COR-104). I would explicitly forbid threshold tuning."
+      },
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/quant.md",
+      "disagreement_note": null,
+      "agreement": "twin_absent"
+    },
+    {
+      "persona_id": "portfolio-manager",
+      "claude": {
+        "interpret": "From a risk-budget seat, a flag that roughly doubles the odds of a -5% breach and reliably precedes negative drift is actionable as insurance, because the cost of a small hedge is bounded and the payoff is convex. The danger is over-trusting it and over-hedging into the 11 of 12 times it's noise.",
+        "act": "Implement as a small, rules-light tilt: on COR1M<8 add a modest QQQ-skewed hedge, cap the premium spend, let it expire if no breach. Pair with H-COR-003 to confirm it adds something VIX wasn't already telling me."
+      },
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/portfolio-manager.md",
+      "disagreement_note": null,
+      "agreement": "twin_absent"
+    }
+  ]
+}

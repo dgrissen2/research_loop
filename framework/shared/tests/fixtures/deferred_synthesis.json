@@ -1,0 +1,25 @@
+{
+  "round": 1,
+  "deferred": {"is_deferred": true, "reason": "Nothing decision-moving this round; paper-track and pause."},
+  "termination_recommendation": {"recommend": "continue", "reason": null, "data_blocked": []},
+  "decisions": [
+    {
+      "decision_key": "qqq-beta-adjust",
+      "classification": "defer",
+      "reason": "Robustness only; revisit next regime.",
+      "sources": [
+        {"persona_id": "quant", "engine": "claude", "candidate_key": "qqq-beta-adjust"},
+        {"persona_id": "quant", "engine": "codex", "candidate_key": "qqq-beta-adjust"}
+      ]
+    },
+    {
+      "decision_key": "oos-validation",
+      "classification": "defer",
+      "reason": "Data-blocked; cannot run OOS yet.",
+      "sources": [
+        {"persona_id": "cio", "engine": "claude", "candidate_key": "oos-validation"},
+        {"persona_id": "cio", "engine": "codex", "candidate_key": "oos-validation"}
+      ]
+    }
+  ]
+}

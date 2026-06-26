@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img" aria-label="demo placeholder">
+  <rect width="1000" height="560" rx="14" fill="#0b1020"/>
+  <rect x="0" y="0" width="1000" height="44" rx="14" fill="#111827"/>
+  <circle cx="28" cy="22" r="7" fill="#ef4444"/><circle cx="52" cy="22" r="7" fill="#f59e0b"/><circle cx="76" cy="22" r="7" fill="#22c55e"/>
+  <text x="500" y="27" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#94a3b8">research_loop — demo</text>
+  <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="20" fill="#cbd5e1">
+    <text x="36" y="96"><tspan fill="#5eead4">$</tspan> curl -fsSL https://research-loop.dev/install.sh | bash</text>
+    <text x="36" y="132" fill="#94a3b8"># … installs the skill, personas, templates, work folders</text>
+    <text x="36" y="180"><tspan fill="#5eead4">›</tspan> /plannotator-setup-goal</text>
+    <text x="36" y="212" fill="#94a3b8">  → seed ideas → round cap → hypotheses</text>
+    <text x="36" y="260"><tspan fill="#5eead4">›</tspan> /goal goals/cor1m-concentration-hedge/goal.md</text>
+    <text x="36" y="292" fill="#94a3b8">  → H-COR-001 … verdict: supported · circularity: clean</text>
+  </g>
+  <g transform="translate(500,420)">
+    <circle r="46" fill="none" stroke="#60a5fa" stroke-width="4"/>
+    <path d="M-16,-24 L26,0 L-16,24 Z" fill="#60a5fa"/>
+  </g>
+  <text x="500" y="510" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="20" fill="#cbd5e1">▶ demo GIF placeholder</text>
+  <text x="500" y="538" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="15" fill="#64748b">replace with a vhs-generated terminal recording (assets/demo.gif)</text>
+</svg>

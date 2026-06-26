@@ -1,0 +1,21 @@
+# research_loop project config (read by the research-hypothesis-maintainer skill)
+# prefix is provisional until the skill confirms it with you on first use
+prefix: COR
+prefix_confirmed: true
+project_root: /path/to/cor1m-concentration-hedge
+scope: local
+# personas: the CONFIRMED panel — empty until the skill confirms it per goal (NOT a default).
+# CIO / Portfolio Manager / Quant ship in personas_dir only as samples to start from.
+# Confirmed 2026-06-17 for goal cor1m-concentration-hedge.
+personas: [cio, quant, portfolio-manager]
+personas_dir: .claude/personas
+codex: true
+round_cap: 7
+# K: minimum candidate proposals on a non-deferred round (Phase-8 coverage floor).
+K: 2
+# persona_source: 'local' (.claude/personas) or 'global' (~/.claude/personas, shared
+# across repos). Under 'global', global wins for confirmed ids; declare per-repo
+# overrides in persona_overrides. See RESEARCH_PROCESS.md / ADR 0001.
+persona_source: local
+persona_overrides: []
+framework_version: 1.1.0

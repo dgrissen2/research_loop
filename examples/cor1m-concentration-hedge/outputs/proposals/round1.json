@@ -1,0 +1,115 @@
+{
+  "round": 1,
+  "blocks": [
+    {
+      "persona_id": "cio",
+      "engine": "claude",
+      "producer_status": "ok",
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/cio.md",
+      "candidates": [
+        {
+          "candidate_key": "beta-vs-concentration",
+          "kind": "hypothesis",
+          "title": "The QQQ over-bulled penalty is concentration, not just beta",
+          "priority": "high",
+          "parent": null,
+          "rationale": "H-COR-003 shows COR1M<8 adds edge beyond VIX only for QQQ. Before crediting concentration, control QQQ drawdown for the market move (SPY dd) plus VIX and test whether the trigger still adds incremental QQQ drawdown."
+        },
+        {
+          "candidate_key": "era-stability",
+          "kind": "hypothesis",
+          "title": "The COR1M<8 effect generalizes beyond the 2024-2026 regime",
+          "priority": "high",
+          "parent": null,
+          "rationale": "8 of 9 episodes are 2024-2026. A verdict that only holds in one regime is not usable. Test how the surviving effect behaves pre-2024 vs 2024-2026 and state the regime-concentration limit explicitly."
+        },
+        {
+          "candidate_key": "iwm-control",
+          "kind": "experiment",
+          "title": "Re-admit IWM as a control-only low-concentration reference",
+          "priority": "high",
+          "parent": "H-COR-001",
+          "rationale": "Restores the high-vs-low concentration contrast the facts removed; needed for a real concentration-specificity test."
+        }
+      ],
+      "reprioritize": []
+    },
+    {
+      "persona_id": "quant",
+      "engine": "claude",
+      "producer_status": "ok",
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/quant.md",
+      "candidates": [
+        {
+          "candidate_key": "beta-vs-concentration",
+          "kind": "hypothesis",
+          "title": "The QQQ over-bulled penalty is concentration, not just beta",
+          "priority": "high",
+          "parent": null,
+          "rationale": "Add SPY drawdown as a regressor alongside VIX; block-bootstrap CI on the trigger coefficient. If it spans zero, the QQQ edge is beta, not concentration."
+        },
+        {
+          "candidate_key": "era-stability",
+          "kind": "hypothesis",
+          "title": "The COR1M<8 effect generalizes beyond the 2024-2026 regime",
+          "priority": "medium",
+          "parent": null,
+          "rationale": "Permutation/era-split inference; with ~8 of 9 episodes post-2024 the honest finding may be that cross-era stability cannot be established."
+        },
+        {
+          "candidate_key": "oos-tracker",
+          "kind": "experiment",
+          "title": "Out-of-sample tracker for new COR1M<8 episodes",
+          "priority": "high",
+          "parent": "H-COR-002",
+          "rationale": "Only honest cure for tiny in-sample N: log each new episode's realized 21d/42d outcome as it prints."
+        },
+        {
+          "candidate_key": "mtc-correction",
+          "kind": "experiment",
+          "title": "Family-wise multiple-testing correction across ETF x horizon x trigger",
+          "priority": "medium",
+          "parent": "H-COR-002",
+          "rationale": "Headline lift/gap figures are uncorrected for the number of cuts examined."
+        }
+      ],
+      "reprioritize": []
+    },
+    {
+      "persona_id": "portfolio-manager",
+      "engine": "claude",
+      "producer_status": "ok",
+      "resolved_source": "local",
+      "resolved_path": ".claude/personas/portfolio-manager.md",
+      "candidates": [
+        {
+          "candidate_key": "oos-tracker",
+          "kind": "experiment",
+          "title": "Out-of-sample tracker for new COR1M<8 episodes",
+          "priority": "high",
+          "parent": "H-COR-002",
+          "rationale": "Need live confirmation before sizing any hedge budget to the flag."
+        },
+        {
+          "candidate_key": "hedge-net-of-cost",
+          "kind": "experiment",
+          "title": "Stylized protective-put hedge P&L at episode entry, net of cost",
+          "priority": "medium",
+          "parent": "H-COR-002",
+          "rationale": "Does acting on the flag (buy a 21d ATM put, premium ~BS with VIX) beat doing nothing, net of cost? Early read: helps QQQ (+0.50%), hurts SPY (-0.65%)."
+        },
+        {
+          "candidate_key": "iwm-control",
+          "kind": "experiment",
+          "title": "Re-admit IWM as a control-only low-concentration reference",
+          "priority": "medium",
+          "parent": "H-COR-001",
+          "rationale": "Lets risk governance see whether the flag is concentration-specific before tilting hedges by index."
+        }
+      ],
+      "reprioritize": []
+    }
+  ]
+}

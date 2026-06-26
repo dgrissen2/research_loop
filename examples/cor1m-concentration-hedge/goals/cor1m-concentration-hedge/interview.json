@@ -1,0 +1,126 @@
+{
+  "stage": "interview",
+  "title": "COR1M concentration measure & over-bulled hedge trigger",
+  "goalSlug": "cor1m-concentration-hedge",
+  "questions": [
+    {
+      "id": "panel",
+      "prompt": "Confirm the persona panel that will run this research loop.",
+      "description": "research_loop.yml currently has personas: [] (must be confirmed per goal). Sample personas already exist at .claude/personas/: cio.md, quant.md, portfolio-manager.md. The loop reviews every finding through this panel.",
+      "answerMode": "multi-custom",
+      "recommendedAnswer": "Confirm all three: CIO, Quant Analyst, Portfolio Manager — they map 1:1 to the shipped persona files and give the macro/rigor/risk-budget lenses this question needs.",
+      "recommendedOptionIds": ["cio", "quant", "pm"],
+      "options": [
+        { "id": "cio", "label": "CIO (macro / allocation lens)" },
+        { "id": "quant", "label": "Quant Analyst (statistical rigor)" },
+        { "id": "pm", "label": "Portfolio Manager (risk budget / execution)" }
+      ],
+      "required": true
+    },
+    {
+      "id": "claims",
+      "prompt": "Which claims should become the seed hypotheses (H-COR-001…)?",
+      "description": "These become the goal's facts and the loop's starting hypotheses. The request splits naturally into a measurement claim and a tradeability claim; a third tests whether COR1M beats a plain vol baseline.",
+      "answerMode": "multi-custom",
+      "recommendedAnswer": "All three. (1) COR1M validly captures extreme single-stock concentration/crowding (measurement validity). (2) The low <8 'over-bulled' tail is a usable forward hedge trigger for equity indices (tradeability). (3) The COR1M tail adds value beyond a VIX/vol-based trigger (incremental edge).",
+      "recommendedOptionIds": ["validity", "tradeability", "incremental"],
+      "options": [
+        { "id": "validity", "label": "H1: COR1M validly measures extreme concentration / crowding" },
+        { "id": "tradeability", "label": "H2: COR1M <8 tail is a usable forward hedge trigger" },
+        { "id": "incremental", "label": "H3: COR1M tail adds edge beyond a VIX/vol baseline" }
+      ],
+      "required": true
+    },
+    {
+      "id": "trigger_def",
+      "prompt": "How should the 'over-bulled' trigger be defined for testing?",
+      "description": "SpotGamma uses an absolute level. The quant persona will demand a calibration window + quantile basis, so a percentile/z-score variant is the robustness counterpart to the absolute level.",
+      "answerMode": "multi-custom",
+      "recommendedAnswer": "Primary: absolute COR1M < 8 (SpotGamma 'certain risk flag'), with < 9 as a secondary/warning band. Robustness: trailing-percentile (e.g. bottom 5% of a rolling window) and a z-score band, so the trigger isn't anchored to one hard-coded number.",
+      "recommendedOptionIds": ["abs8", "abs9", "pct", "z"],
+      "options": [
+        { "id": "abs8", "label": "Absolute < 8 (SpotGamma flag) — primary" },
+        { "id": "abs9", "label": "Absolute < 9 — secondary warning band" },
+        { "id": "pct", "label": "Trailing percentile (e.g. bottom 5%)" },
+        { "id": "z", "label": "Z-score / std-dev band vs rolling mean" },
+        { "id": "velocity", "label": "Rate-of-change / velocity into the tail" }
+      ],
+      "required": true
+    },
+    {
+      "id": "indices",
+      "prompt": "Which equity indices should the hedge trigger be evaluated against?",
+      "description": "Local data has SPY, QQQ, IWM, VIX OHLC. COR1M is S&P-derived, so SPY is the natural home; QQQ/IWM test whether the concentration signal travels to tech-heavy and small-cap indices.",
+      "answerMode": "multi-custom",
+      "recommendedAnswer": "All three available ETFs: SPY (primary, since COR1M is S&P-derived), plus QQQ and IWM to test transfer. VIX is used as the comparison/benchmark signal, not a hedge target.",
+      "recommendedOptionIds": ["spy", "qqq", "iwm"],
+      "options": [
+        { "id": "spy", "label": "SPY (primary)" },
+        { "id": "qqq", "label": "QQQ" },
+        { "id": "iwm", "label": "IWM" }
+      ],
+      "required": true
+    },
+    {
+      "id": "success_metric",
+      "prompt": "What makes the trigger 'usable'? Pick the success metrics and forward horizons.",
+      "description": "Needs to be testable per the fact sheet. The PM cares about drawdown/risk-budget payoff; the quant cares about hit-rate vs the unconditional base rate and stability across horizons.",
+      "answerMode": "multi-custom",
+      "recommendedAnswer": "Forward max-drawdown elevated vs the unconditional base rate, plus the forward return distribution, measured at 5/10/21/42 trading-day horizons, scored by hit-rate / precision against the base rate (not just average). 'Usable' = a statistically and economically meaningful skew toward downside after the trigger fires.",
+      "recommendedOptionIds": ["dd", "retdist", "hitrate", "horizons"],
+      "options": [
+        { "id": "dd", "label": "Forward max drawdown vs base rate" },
+        { "id": "retdist", "label": "Forward return distribution (mean/tail)" },
+        { "id": "hitrate", "label": "Hit-rate / precision vs unconditional base rate" },
+        { "id": "horizons", "label": "Multiple horizons: 5 / 10 / 21 / 42 days" },
+        { "id": "leadtime", "label": "Signal lead time before drawdown onset" }
+      ],
+      "required": true
+    },
+    {
+      "id": "hedge_instrument",
+      "prompt": "Should the loop model the actual hedge instrument, or just the signal on the underlying?",
+      "description": "Validating the signal (forward index return/drawdown) is separable from structuring a live hedge (put spreads / VIX calls via hedge-convexity-scout). Doing both at once risks conflating signal quality with instrument selection.",
+      "answerMode": "single-custom",
+      "recommendedAnswer": "Signal-only for the core loop (forward index return/drawdown on the underlying); defer option/convexity structuring to a follow-up experiment once the signal is shown to have edge. Keeps H2 a clean test of the trigger, not of option selection.",
+      "recommendedOptionIds": ["signal_only"],
+      "options": [
+        { "id": "signal_only", "label": "Signal-only on the underlying; option overlay deferred to follow-up" },
+        { "id": "overlay_now", "label": "Include an option/convexity overlay from round 1" },
+        { "id": "both", "label": "Both in scope, equal priority" }
+      ],
+      "required": true
+    },
+    {
+      "id": "concentration_groundtruth",
+      "prompt": "How should the 'COR1M measures concentration' claim (H1) be validated, given local data limits?",
+      "description": "We only have COR1M + index/VIX OHLC locally — no top-N market-cap weight, dispersion, or single-stock call-volume series. This is a real data-availability constraint on H1.",
+      "answerMode": "single-custom",
+      "recommendedAnswer": "Round 1: treat COR1M's construction as the concentration proxy and cross-check against what's available (VIX, realized index correlation/dispersion derivable from the ETFs). Flag external concentration ground-truth (top-N weight, single-stock call volume) as a follow-up experiment to fetch only if H1 needs it — don't block the tradeability work on it.",
+      "recommendedOptionIds": ["proxy_first"],
+      "options": [
+        { "id": "proxy_first", "label": "Use COR1M as proxy + available cross-checks; external data is a follow-up" },
+        { "id": "require_external", "label": "Require external concentration data now (adds a data dependency)" },
+        { "id": "defer_h1", "label": "Defer H1 entirely; round 1 is tradeability-only" }
+      ],
+      "required": true
+    },
+    {
+      "id": "guardrails",
+      "prompt": "Confirm the round cap and what is explicitly OUT of scope.",
+      "description": "research_loop.yml sets round_cap: 3 (a deliberate stopping point, ends in a decision-maker memo). Scope guardrails keep the loop from drifting into productionization.",
+      "answerMode": "multi-custom",
+      "recommendedAnswer": "Keep round cap = 3. Out of scope: live execution / broker integration, intraday/tick data, non-equity assets, a full backtest/portfolio engine, and parameter over-optimization (curve-fitting the threshold). The deliverable is an evidence-backed verdict + decision memo, not a deployed strategy.",
+      "recommendedOptionIds": ["cap3", "no_exec", "no_intraday", "no_nonequity", "no_overfit"],
+      "options": [
+        { "id": "cap3", "label": "Keep round cap = 3" },
+        { "id": "no_exec", "label": "OUT: live execution / broker integration" },
+        { "id": "no_intraday", "label": "OUT: intraday / tick data" },
+        { "id": "no_nonequity", "label": "OUT: non-equity assets" },
+        { "id": "no_engine", "label": "OUT: full backtest / portfolio engine" },
+        { "id": "no_overfit", "label": "OUT: parameter over-optimization / curve-fitting" }
+      ],
+      "required": true
+    }
+  ]
+}

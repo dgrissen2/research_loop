@@ -1,0 +1,61 @@
+{
+  "round": 2,
+  "deferred": {
+    "is_deferred": true,
+    "reason": "Program converged at round 2. Both surviving decision-moving experiments (walk-forward OOS, real option-chain cost) are data-blocked: no new COR1M<8 episodes exist to test out-of-sample, and no historical option chain is held. Nothing new is testable on the local data, so the round promotes nothing and the program concludes."
+  },
+  "decisions": [
+    {
+      "decision_key": "walkforward-oos",
+      "classification": "defer",
+      "reason": "Converged across 3 proposer(s): cio/claude, portfolio-manager/claude, quant/claude.",
+      "title": "Walk-forward out-of-sample test as new COR1M<8 episodes print",
+      "priority": "high",
+      "parent": "H-COR-002",
+      "rationale": "N=8 in-sample, 7/8 in 2024-26. The only honest resolution of significance AND generalization is genuine new episodes. Cannot be run today (no new episodes exist) \u2014 data-blocked.",
+      "falsification": "",
+      "decision_impact": "",
+      "sources": [
+        {
+          "persona_id": "quant",
+          "engine": "claude",
+          "candidate_key": "walkforward-oos"
+        },
+        {
+          "persona_id": "portfolio-manager",
+          "engine": "claude",
+          "candidate_key": "walkforward-oos"
+        },
+        {
+          "persona_id": "cio",
+          "engine": "claude",
+          "candidate_key": "walkforward-oos"
+        }
+      ]
+    },
+    {
+      "decision_key": "real-option-cost",
+      "classification": "defer",
+      "reason": "Converged across 2 proposer(s): portfolio-manager/claude, quant/claude.",
+      "title": "Real option-chain hedge cost vs the stylized Black-Scholes proxy",
+      "priority": "high",
+      "parent": "H-COR-006",
+      "rationale": "The hedge P&L edge (+0.50% QQQ gross) is stylized; real spreads/slippage could erase it. Requires a historical option chain we do not hold \u2014 data-blocked.",
+      "falsification": "",
+      "decision_impact": "",
+      "sources": [
+        {
+          "persona_id": "quant",
+          "engine": "claude",
+          "candidate_key": "real-option-cost"
+        },
+        {
+          "persona_id": "portfolio-manager",
+          "engine": "claude",
+          "candidate_key": "real-option-cost"
+        }
+      ]
+    }
+  ],
+  "reprioritize": []
+}
