@@ -17,7 +17,7 @@ use Codex. They are optional — the loop falls back to Gemini or an in-Claude p
 
 ## Model & reasoning effort
 
-Defaults: **model `gpt-5.5`**, **reasoning effort `xhigh`** — stated identically in each skill's SKILL.md.
+Defaults: **model `gpt-5.6-sol`**, **reasoning effort `xhigh`** — stated identically in each skill's SKILL.md.
 To change (no reinstall):
 
 - `codex-strategy-review` / `codex-plan-review`: pass `--model` / `--effort`, or edit `DEFAULT_MODEL` / `DEFAULT_EFFORT` at the top of the `.py` script.

@@ -1,11 +1,11 @@
 ---
 name: codex-plan-review
-description: "Run an independent Codex plan review using GPT-5.5 with xhigh reasoning. Use for milestone roadmaps, implementation plans, architecture/design docs, and specs before implementation. Generic by default; flexible for optional persona lenses resolved from a local or global persona registry."
+description: "Run an independent Codex plan review using GPT-5.6 Sol with xhigh reasoning. Use for milestone roadmaps, implementation plans, architecture/design docs, and specs before implementation. Generic by default; flexible for optional persona lenses resolved from a local or global persona registry."
 ---
 
 # Codex Plan Review
 
-Independent plan review using Codex (`gpt-5.5`, `model_reasoning_effort=xhigh`).
+Independent plan review using Codex (`gpt-5.6-sol`, `model_reasoning_effort=xhigh`).
 This is for plans, roadmaps, specs, and design docs, not ordinary code diffs.
 
 ## Focus
@@ -38,8 +38,19 @@ python3 .claude/skills/_research_loop/persona_registry.py --list
 
 ## Model & reasoning effort
 
-Defaults: **model `gpt-5.5`**, **reasoning effort `xhigh`**. To change (no reinstall): pass `--model` /
+Defaults: **model `gpt-5.6-sol`**, **reasoning effort `xhigh`**. To change (no reinstall): pass `--model` /
 `--effort`, or edit `DEFAULT_MODEL` / `DEFAULT_EFFORT` at the top of the script.
+
+## Intent and focus (automatic)
+
+Derive these from the user's request — they should not need to type flags. From how they phrase the
+ask, infer **intent** (what the work is trying to do) and **focus** (what to weight) and pass them as
+`--intent` / `--focus`. For example, *"review the auth refactor on this branch, focus on whether the
+logic is right and skip style"* -> `--intent "auth refactor" --focus "logic correctness, skip style"`.
+
+The text is appended to the prompt as *author framing*, never as another reviewer's findings (the
+review stays independent). A guardrail still surfaces every CRITICAL/HIGH finding even when it falls
+outside the focus.
 
 ## Workflow
 

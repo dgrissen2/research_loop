@@ -10,7 +10,7 @@
 
 <!-- 3. BADGES — ~4, centered, each links. (Add a CI status badge once a workflow exists.) -->
 <p align="center">
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.1.0-blue" alt="version 1.1.0"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.1.1-blue" alt="version 1.1.1"></a>
   <a href="#license"><img src="https://img.shields.io/badge/license-MIT-blue" alt="license"></a>
   <a href="framework/docs/GETTING_STARTED.md"><img src="https://img.shields.io/badge/docs-getting%20started-5eead4" alt="getting started"></a>
   <a href="#install"><img src="https://img.shields.io/badge/install-curl%20%7C%20bash-22c55e" alt="install"></a>
@@ -162,7 +162,7 @@ See the **[System & User Guide](framework/docs/SYSTEM_AND_USER_GUIDE.md)** for t
 - [Using with Plannotator](framework/docs/USING_WITH_PLANNOTATOR.md) — the goals-driven workflow in detail.
 - [System & User Guide](framework/docs/SYSTEM_AND_USER_GUIDE.md) — how the scripts + Stop-hook gate enforce the back half.
 - [Importing into another project](docs/IMPORTING.md) — install and drive research_loop from a separate repo.
-- [Changelog](CHANGELOG.md) — version history (this is **1.1.0**).
+- [Changelog](CHANGELOG.md) — version history (this is **1.1.1**).
 - **Worked example:** `examples/cor1m-concentration-hedge/` — a complete, **dogfooded** study on real public data: *is COR1M's "over-bulled" low tail (extreme implied correlation) a usable hedge trigger?* **5 hypotheses across a 2-round program** (round cap 7, converged early at round 2), with multi-persona panels + cross-model (Codex) reviews. The result is honest and nuanced: the sub-8 flag roughly **doubles** the near-term drawdown-breach rate but isn't statistically significant (~8 episodes, one regime), and it adds edge beyond VIX **only for the concentrated index (QQQ)** → program verdict **weak_support**, decision **hold research-only** (a small, QQQ-skewed hedge *watch-flag*, not a sized trigger). (The loop producing a disciplined, regime-bound *negative* — not a forced win.)
 
 ## License

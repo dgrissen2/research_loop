@@ -83,10 +83,10 @@ def _run_cli(cmd: list[str], prompt: str, via_stdin: bool, timeout: int) -> tupl
 def _invoke_cli(engine: str, prompt: str, timeout: int) -> tuple[str, str]:
     """Dispatch a single bounded model call by engine. Returns (producer_status, text)."""
     if engine == "claude":
-        cmd = ["claude", "-p", "--model", "claude-opus-4-8", "--effort", "high",
+        cmd = ["claude", "-p", "--model", "claude-opus-5-5", "--effort", "high",
                "--no-session-persistence", "--permission-mode", "auto", "--tools", "default"]
         return _run_cli(cmd, prompt, via_stdin=True, timeout=timeout)
-    cmd = ["codex", "exec", "-m", "gpt-5.5", "-c", "model_reasoning_effort=high",
+    cmd = ["codex", "exec", "-m", "gpt-5.6-sol", "-c", "model_reasoning_effort=high",
            "--full-auto", "--skip-git-repo-check", "--"]
     return _run_cli(cmd, prompt, via_stdin=False, timeout=timeout)
 

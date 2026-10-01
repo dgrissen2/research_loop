@@ -9,6 +9,26 @@ this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 > below were internal development milestones, kept here so the lineage of the loop's
 > execution and safety model is on the record.
 
+## [1.1.1] — 2026-10-01
+
+Model refresh plus the hardening of the bundled Codex review skills.
+
+### Changed
+
+- **Claude persona leg now runs on Opus 5.5 (`claude-opus-5-5`, effort `high`).** This
+  is the `claude -p` producer seam in `framework/shared/emit.py`.
+- **Codex defaults moved to `gpt-5.6-sol`** (effort unchanged) across `emit.py`,
+  `run_codex_twin.py`, `install.sh`, and the bundled `codex-review` /
+  `codex-plan-review` / `codex-strategy-review` skills.
+
+### Security
+
+- The bundled Codex review skills now pick up the fixes from upstream persona-review-kit.
+  `codex_review.sh` writes its payload to a private `mktemp` file (mode 600) and cleans it
+  up afterwards. All three review prompts treat the content under review as untrusted
+  data, never as instructions. The reviews also accept `--intent` / `--focus`, which
+  steer the review without suppressing CRITICAL or HIGH findings.
+
 ## [1.1.0] — 2026-06-23
 
 First public release. Adds an optional native-subagent execution path for the

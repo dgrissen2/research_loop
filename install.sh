@@ -267,7 +267,7 @@ if [ "$WANT_CODEX" = "yes" ]; then
   done
   say ""
   warn "Which Codex model these skills use, and how hard it thinks:"
-  say "  ${D}• model  = ${B}gpt-5.5${N}${D}  — the engine doing the review.${N}"
+  say "  ${D}• model  = ${B}gpt-5.6-sol${N}${D}  — the engine doing the review.${N}"
   say "  ${D}• effort = ${B}xhigh${N}${D}    — Codex's reasoning depth. Higher = more thorough but slower${N}"
   say "  ${D}            and more expensive. 'xhigh' is the most careful setting; lower it (high/medium)${N}"
   say "  ${D}            if reviews feel too slow or costly.${N}"

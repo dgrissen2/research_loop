@@ -1,7 +1,7 @@
 ---
 name: codex-review
 description: |
-  Run an independent Codex code review using GPT-5.5 with xhigh reasoning.
+  Run an independent Codex code review using GPT-5.6 Sol with xhigh reasoning.
   Use when user says "codex review", "cross-model review", "run codex on this",
   or during Step 3 of the agentic development process (milestone review panel).
   Collects git diff + changed files, sends to Codex CLI, returns structured findings.
@@ -9,7 +9,7 @@ description: |
 
 # Codex Review
 
-Independent cross-model code review using OpenAI Codex (GPT-5.5, xhigh reasoning). Designed to run in parallel with the three Claude review agents (Architect, CTO, Red Team) during the milestone review panel.
+Independent cross-model code review using OpenAI Codex (GPT-5.6 Sol, xhigh reasoning). Designed to run in parallel with the three Claude review agents (Architect, CTO, Red Team) during the milestone review panel.
 
 ## Why This Exists
 
@@ -58,7 +58,7 @@ Execute the review script, passing the diff and file contents via stdin:
 
 The script handles:
 - Assembling diff + file content
-- Piping to `codex exec -m gpt-5.5 -c model_reasoning_effort=xhigh`
+- Piping to `codex exec -m gpt-5.6-sol -c model_reasoning_effort=xhigh`
 - Passing the structured review prompt
 
 **IMPORTANT**: Do NOT include any of Claude's reasoning, planning notes, or prior review comments in the Codex prompt. Codex must form its own independent judgment.
@@ -120,3 +120,13 @@ The review prompt instructs Codex to evaluate these dimensions:
 - **Authentication error**: Run `codex login` to authenticate with OpenAI
 - **Timeout on large diffs**: For milestones touching >15 files, the script automatically switches to Serena-extracted symbol bodies
 - **Empty output**: Check that there are actual changes to review (`git diff HEAD` should show content)
+
+## Intent and focus (automatic)
+
+Derive these from the user's request — they should not need to set anything. From how they phrase the
+ask, infer **intent** and **focus** and pass them via `CODEX_INTENT` / `CODEX_FOCUS`. For example,
+*"codex-review this branch, focus on the auth logic and skip style"* ->
+`CODEX_INTENT="auth change" CODEX_FOCUS="auth logic, skip style"`.
+
+The text is appended to the prompt as *author framing*, never as another reviewer's findings. A
+guardrail still surfaces every CRITICAL/HIGH finding even when it falls outside the focus.

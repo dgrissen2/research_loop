@@ -65,7 +65,7 @@ def run_once(prompt: str, out: Path, effort: str, timeout: int) -> tuple[bool, s
         out.unlink()
     try:
         proc = subprocess.Popen(
-            ["codex", "exec", "-m", "gpt-5.5", "-c", f"model_reasoning_effort={effort}",
+            ["codex", "exec", "-m", "gpt-5.6-sol", "-c", f"model_reasoning_effort={effort}",
              "--full-auto", "--skip-git-repo-check", "-o", str(out), "--", prompt],
             text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
             start_new_session=True,  # own process group -> killpg reaps codex + child only
